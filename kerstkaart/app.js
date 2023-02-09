@@ -1,410 +1,152 @@
-const canvas = document.getElementById('Canvas');
-const ctx = canvas.getContext('2d');
+class Kaart
+{
+    constructor()
+    {
+        this.c = document.getElementById("myCanvas");
+        this.ctx = this.c.getContext("2d");
+        this.foto = document.getElementById("slee");
+        this.fotoX = -250;
+        this.fotoY = Math.floor(Math.random() * 530)
+        this.newCord = 0
+    }
 
-//kerstkaart
-ctx.beginPath();
-ctx.lineWidth = 4;
-ctx.moveTo(350,200);
-ctx.lineTo(350,800);
-ctx.moveTo(350,200);
-ctx.lineTo(900,100);
-ctx.moveTo(900,100);
-ctx.lineTo(900,700);
-ctx.moveTo(350,800);
-ctx.lineTo(900,700);
-ctx.moveTo(900,100);
-ctx.lineTo(1500,200);
-ctx.moveTo(1500,200);
-ctx.lineTo(1500,800);
-ctx.moveTo(1500,800);
-ctx.lineTo(900,700);
-ctx.closePath();
-ctx.stroke();
+    setBackground()
+    {
+        let ctx = this.ctx
+        ctx.fillStyle = "green";
+        ctx.fillRect(0,0,1000,600);
 
+        ctx.strokeStyle = "yellow";
+        ctx.strokeRect(10,10,980,580);;
+    }
 
-//de weg kaart links
-ctx.beginPath();
-ctx.lineWidth = 4;
-ctx.fillStyle = "grey";
-ctx.fillRect(450,300,350,30);
-ctx.fillRect(800,300,30,300);
-ctx.fillRect(450,450,350,30);
-ctx.fillRect(600,450,30,100);
-ctx.closePath();
-ctx.stroke();
-//
+    drawVillage(x,y)
+    {
+        let g = this.ctx
+        let randomgetal =  Math.random(0,1);
 
-//wegstrepen
-ctx.beginPath();
-ctx.moveTo(455,315);
-ctx.lineTo(485,315);
-ctx.closePath();
-ctx.stroke();
-ctx.beginPath();
-ctx.moveTo(505,315);
-ctx.lineTo(535,315);
-ctx.closePath();
-ctx.stroke();
-ctx.beginPath();
-ctx.moveTo(555,315);
-ctx.lineTo(585,315);
-ctx.closePath();
-ctx.stroke();
-ctx.beginPath();
-ctx.moveTo(605,315);
-ctx.lineTo(635,315);
-ctx.closePath();
-ctx.stroke();
-ctx.beginPath();
-ctx.moveTo(655,315);
-ctx.lineTo(685,315);
-ctx.closePath();
-ctx.stroke();
-ctx.beginPath();
-ctx.moveTo(705,315);
-ctx.lineTo(735,315);
-ctx.closePath();
-ctx.stroke();
-ctx.beginPath();
-ctx.moveTo(755,315);
-ctx.lineTo(785,315);
-ctx.closePath();
-ctx.stroke();
-ctx.beginPath();
-ctx.moveTo(815,315);
-ctx.lineTo(815,345);
-ctx.closePath();
-ctx.stroke();
-ctx.beginPath();
-ctx.moveTo(815,365);
-ctx.lineTo(815,395);
-ctx.closePath();
-ctx.stroke();
-ctx.beginPath();
-ctx.moveTo(815,415);
-ctx.lineTo(815,445);
-ctx.closePath();
-ctx.stroke();ctx.beginPath();
-ctx.moveTo(815,465);
-ctx.lineTo(815,495);
-ctx.closePath();
-ctx.stroke();ctx.beginPath();
-ctx.moveTo(815,515);
-ctx.lineTo(815,545);
-ctx.closePath();
-ctx.stroke();ctx.beginPath();
-ctx.moveTo(815,565);
-ctx.lineTo(815,595);
-ctx.closePath();
-ctx.stroke();ctx.beginPath();
-ctx.moveTo(800,465);
-ctx.lineTo(770,465);
-ctx.closePath();
-ctx.stroke();ctx.beginPath();
-ctx.moveTo(750,465);
-ctx.lineTo(720,465);
-ctx.closePath();
-ctx.stroke();ctx.beginPath();
-ctx.moveTo(700,465);
-ctx.lineTo(670,465);
-ctx.closePath();
-ctx.stroke();ctx.beginPath();
-ctx.moveTo(650,465);
-ctx.lineTo(620,465);
-ctx.closePath();
-ctx.stroke();ctx.beginPath();
-ctx.moveTo(600,465);
-ctx.lineTo(570,465);
-ctx.closePath();
-ctx.stroke();ctx.beginPath();
-ctx.moveTo(550,465);
-ctx.lineTo(520,465);
-ctx.closePath();
-ctx.stroke();ctx.beginPath();
-ctx.moveTo(500,465);
-ctx.lineTo(470,465);
-ctx.closePath();
-ctx.stroke();ctx.beginPath();
-ctx.moveTo(615,480);
-ctx.lineTo(615,500);
-ctx.closePath();
-ctx.stroke();ctx.beginPath();
-ctx.moveTo(615,520);
-ctx.lineTo(615,540);
-ctx.closePath();
-ctx.stroke();
+        g.strokeStyle = "black"
 
-//huisjes links
-//huis 1 rij 1
-ctx.beginPath();
-ctx.strokeStyle = "red";
-ctx.fillStyle = "red";
-ctx.moveTo(475,240);
-ctx.lineTo(463,260);
-ctx.lineTo(487,260);
-ctx.closePath();
-ctx.stroke();
-ctx.fill();
-ctx.fillStyle = "red";
-ctx.fillRect(460,260,30,30);
+        //dak
+        g.beginPath();
+        g.fillStyle = "red"
+        g.moveTo(x+150,y+50);
+        g.lineTo(x+100,y+150);
+        g.lineTo(x+300,y+200);
+        g.lineTo(x+350,y+100);
+        g.closePath();
+        g.stroke();
+        g.fill();
 
-//huis 2 rij 1
-ctx.beginPath();
-ctx.strokeStyle = "blue";
-ctx.fillStyle = "blue";
-ctx.moveTo(525,240);
-ctx.lineTo(513,260);
-ctx.lineTo(537,260);
-ctx.closePath();
-ctx.stroke();
-ctx.fill();
-ctx.fillStyle = "blue";
-ctx.fillRect(510,260,30,30);
+        //muren
+        g.beginPath();
+        g.fillStyle = "gray"
+        g.moveTo(x+300,y+200);
+        g.lineTo(x+100,y+150);
+        g.lineTo(x+100,y+250);
+        g.lineTo(x+300,y+300);
+        g.lineTo(x+400,y+250);
+        g.lineTo(x+400,y+150);
+        g.lineTo(x+350,y+100);
+        g.lineTo(x+300,y+200);
+        g.closePath();
+        g.stroke();
+        g.fill();
 
-//huis 3 rij 1
-ctx.beginPath();
-ctx.strokeStyle = "green";
-ctx.fillStyle = "green";
-ctx.moveTo(575,240);
-ctx.lineTo(563,260);
-ctx.lineTo(587,260);
-ctx.closePath();
-ctx.stroke();
-ctx.fill();
-ctx.fillStyle = "green";
-ctx.fillRect(560,260,30,30);
+        //raam
+        g.beginPath();
+            g.fillStyle = "yellow"
+        g.moveTo(x+250,y+215);
+        g.lineTo(x+150,y+190);
+        g.lineTo(x+150,y+240);
+        g.lineTo(x+250,y+265);
+        g.closePath();
+        g.stroke();
+        g.fill();
+    }
 
-//huis 4 rij 1
-ctx.beginPath();
-ctx.strokeStyle = "red";
-ctx.fillStyle = "red";
-ctx.moveTo(625,240);
-ctx.lineTo(613,260);
-ctx.lineTo(637,260);
-ctx.closePath();
-ctx.stroke();
-ctx.fill();
-ctx.fillStyle = "red";
-ctx.fillRect(610,260,30,30);
+    drawTree(x, y) {
+        let ctx = this.ctx
+        // Draw the trunk
+        ctx.fillStyle = "brown";
+        ctx.fillRect(x-10, y, 20, 100);
+      
+        // Draw the tree
+        ctx.beginPath();
+        ctx.moveTo(x - 50, y+75);
+        ctx.lineTo(x + 50, y+75);
+        ctx.lineTo(x, y - 75);
+        ctx.lineTo(x - 50, y+75);
+        ctx.fillStyle = "green";
+        ctx.strokeStyle = "black";
+        ctx.fill();
+        ctx.stroke();
 
-//huis 5 rij 1
-ctx.beginPath();
-ctx.strokeStyle = "blue";
-ctx.fillStyle = "blue";
-ctx.moveTo(675,240);
-ctx.lineTo(663,260);
-ctx.lineTo(687,260);
-ctx.closePath();
-ctx.stroke();
-ctx.fill();
-ctx.fillStyle = "blue";
-ctx.fillRect(660,260,30,30);
+        ctx.beginPath();
+        ctx.fillStyle = "red"
+        ctx.arc(y+50, x-100, 10, 0, 2 * Math.PI);
+        ctx.arc(y+10, x+20, 10, 0, 2 * Math.PI);
+        ctx.fill();
 
-//huis 6 rij 1
-ctx.beginPath();
-ctx.strokeStyle = "green";
-ctx.fillStyle = "green";
-ctx.moveTo(725,240);
-ctx.lineTo(713,260);
-ctx.lineTo(737,260);
-ctx.closePath();
-ctx.stroke();
-ctx.fill();
-ctx.fillStyle = "green";
-ctx.fillRect(710,260,30,30);
+        ctx.beginPath();
+        ctx.fillStyle = "pink"
+        ctx.arc(y+70, x-15, 10, 0, 2 * Math.PI);
+        ctx.arc(y+35, x-50, 10, 0, 2 * Math.PI);
+        ctx.fill();
 
-//huis 7 rij 1
-ctx.beginPath();
-ctx.strokeStyle = "red";
-ctx.fillStyle = "red";
-ctx.moveTo(775,240);
-ctx.lineTo(763,260);
-ctx.lineTo(787,260);
-ctx.closePath();
-ctx.stroke();
-ctx.fill();
-ctx.fillStyle = "red";
-ctx.fillRect(760,260,30,30);
+        ctx.beginPath();
+        ctx.fillStyle = "yellow"
+        ctx.arc(y+40, x, 10, 0, 2 * Math.PI);
+        ctx.arc(y+60, x-60, 10, 0, 2 * Math.PI);
+        ctx.fill();
 
-//huis 1 rij 2
-ctx.beginPath();
-ctx.strokeStyle = "red";
-ctx.fillStyle = "red";
-ctx.moveTo(475,390);
-ctx.lineTo(463,410);
-ctx.lineTo(487,410);
-ctx.closePath();
-ctx.stroke();
-ctx.fill();
-ctx.fillStyle = "red";
-ctx.fillRect(460,410,30,30);
+        ctx.beginPath();
+        ctx.fillStyle = "blue"
+        ctx.arc(y+70, x+10, 10, 0, 2 * Math.PI);
+        ctx.arc(y, x, 10, 0, 2 * Math.PI);
+        ctx.fill();
+      
+        // Draw the star
+        ctx.beginPath();
+        ctx.moveTo(x, y - 90);
+        ctx.lineTo(x - 15, y - 75);
+        ctx.lineTo(x, y - 60);
+        ctx.lineTo(x + 15, y - 75);
+        ctx.lineTo(x, y - 90);
+        ctx.fillStyle = "yellow";
+        ctx.fill();
+    }
 
-//huis 2 rij 2
-ctx.beginPath();
-ctx.strokeStyle = "blue";
-ctx.fillStyle = "blue";
-ctx.moveTo(525,390);
-ctx.lineTo(513,410);
-ctx.lineTo(537,410);
-ctx.closePath();
-ctx.stroke();
-ctx.fill();
-ctx.fillStyle = "blue";
-ctx.fillRect(510,410,30,30);
+    tekst()
+    {
+        let ctx = this.ctx
 
-//huis 3 rij 2
-ctx.beginPath();
-ctx.strokeStyle = "green";
-ctx.fillStyle = "green";
-ctx.moveTo(575,390);
-ctx.lineTo(563,410);
-ctx.lineTo(587,410);
-ctx.closePath();
-ctx.stroke();
-ctx.fill();
-ctx.fillStyle = "green";
-ctx.fillRect(560,410,30,30);
+        ctx.fillStyle = "black"
+        ctx.font = "35px Arial";
+        ctx.fillText("Happy christmas!!!", 35, 540);
+    }
 
-//huis 4 rij 2
-ctx.beginPath();
-ctx.strokeStyle = "red";
-ctx.fillStyle = "red";
-ctx.moveTo(625,390);
-ctx.lineTo(613,410);
-ctx.lineTo(637,410);
-ctx.closePath();
-ctx.stroke();
-ctx.fill();
-ctx.fillStyle = "red";
-ctx.fillRect(610,410,30,30);
+    Frame()
+    {
+        let scope = this
+        setInterval(function () { scope.doGameFrame() }, 33)
+    }
 
-//huis 5 rij 2
-ctx.beginPath();
-ctx.strokeStyle = "blue";
-ctx.fillStyle = "blue";
-ctx.moveTo(675,390);
-ctx.lineTo(663,410);
-ctx.lineTo(687,410);
-ctx.closePath();
-ctx.stroke();
-ctx.fill();
-ctx.fillStyle = "blue";
-ctx.fillRect(660,410,30,30);
+    doGameFrame()
+    {
+        this.setBackground();
+        this.drawVillage(-30,40);
+        this.drawVillage(500,250);
+        this.drawVillage(350,-30);
+        this.tekst();
+        this.drawTree(450,400);
+        this.ctx.drawImage(this.foto, this.fotoX, this.fotoY);
+        this.fotoX += 10;
+        
+    }
+    
+    
+}
 
-//huis 6 rij 2
-ctx.beginPath();
-ctx.strokeStyle = "green";
-ctx.fillStyle = "green";
-ctx.moveTo(725,390);
-ctx.lineTo(713,410);
-ctx.lineTo(737,410);
-ctx.closePath();
-ctx.stroke();
-ctx.fill();
-ctx.fillStyle = "green";
-ctx.fillRect(710,410,30,30);
-
-////huis 7 rij 2
-ctx.beginPath();
-ctx.strokeStyle = "red";
-ctx.fillStyle = "red";
-ctx.moveTo(775,390);
-ctx.lineTo(763,410);
-ctx.lineTo(787,410);
-ctx.closePath();
-ctx.stroke();
-ctx.fill();
-ctx.fillStyle = "red";
-ctx.fillRect(760,410,30,30);
-
-//sneeuwpop 1
-ctx.beginPath();
-ctx.strokeStyle = "black";
-ctx.arc(475, 540, 15, -1.2, 1.25 * Math.PI);
-ctx.arc(475,520, 10, 0.75 * Math.PI, 0.75 );
-ctx.closePath();
-ctx.stroke();
-ctx.beginPath();
-ctx.arc(472,519,0.1,0,2 *Math.PI);
-ctx.closePath();
-ctx.stroke();
-ctx.beginPath();
-ctx.arc(478,519,0.1,0,2 *Math.PI);
-ctx.closePath();
-ctx.stroke();
-
-//sneeuwpop 2
-ctx.beginPath();
-ctx.strokeStyle = "black";
-ctx.arc(525, 540, 15, -1.2, 1.25 * Math.PI);
-ctx.arc(525,520, 10, 0.75 * Math.PI, 0.75 );
-ctx.closePath();
-ctx.stroke();
-ctx.beginPath();
-ctx.arc(522,519,0.1,0,2 *Math.PI);
-ctx.closePath();
-ctx.stroke();
-ctx.beginPath();
-ctx.arc(528,519,0.1,0,2 *Math.PI);
-ctx.closePath();
-ctx.stroke();
-
-//boom 1
-ctx.beginPath();
-ctx.fillStyle = "green"
-ctx.moveTo(660,530);
-ctx.lineTo(695,530);
-ctx.lineTo(677,500);
-ctx.closePath();
-ctx.stroke();
-ctx.fill();
-ctx.fillStyle = "brown";
-ctx.fillRect(670,532,15,20);
-
-//boom 2
-ctx.beginPath();
-ctx.fillStyle = "green"
-ctx.moveTo(730,530);
-ctx.lineTo(765,530);
-ctx.lineTo(747,500);
-ctx.closePath();
-ctx.stroke();
-ctx.fill();
-ctx.fillStyle = "brown";
-ctx.fillRect(740,532,15,20);
-
-//boom 3
-ctx.beginPath();
-ctx.fillStyle = "green"
-ctx.moveTo(845,348);
-ctx.lineTo(880,348);
-ctx.lineTo(863,318);
-ctx.closePath();
-ctx.stroke();
-ctx.fill();
-ctx.fillStyle = "brown";
-ctx.fillRect(855,350,15,20);
-
-//boom 4
-ctx.beginPath();
-ctx.fillStyle = "green"
-ctx.moveTo(845,438);
-ctx.lineTo(880,438);
-ctx.lineTo(863,408);
-ctx.closePath();
-ctx.stroke();
-ctx.fill();
-ctx.fillStyle = "brown";
-ctx.fillRect(855,440,15,20);
-
-//boom 5
-ctx.beginPath();
-ctx.fillStyle = "green"
-ctx.moveTo(845,538);
-ctx.lineTo(880,538);
-ctx.lineTo(863,508);
-ctx.closePath();
-ctx.stroke();
-ctx.fill();
-ctx.fillStyle = "brown";
-ctx.fillRect(855,540,15,20);
+let kaart = new Kaart;
+kaart.Frame();
